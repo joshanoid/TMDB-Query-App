@@ -3,7 +3,6 @@
     "compilerOptions": {
         "module": "commonjs",
         "declaration": true,
-        "emitDecoratorMetadata": true,
         "baseUrl": "./src",
         "incremental": true
     },
