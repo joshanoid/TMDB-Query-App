@@ -2,6 +2,12 @@
     "extends": ["airbnb", "prettier", "plugin:prettier/recommended", "plugin:unicorn/recommended"],
     "parser": "@babel/eslint-parser",
     "plugins": ["react-hooks", "functional", "jest-formatting", "unicorn"],
+    "settings": {
+        "import/resolver": {
+            "node": true,
+            "eslint-import-resolver-typescript": true
+        }
+    },
     "env": {
         "browser": true,
         "node": true,
