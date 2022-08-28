@@ -29,23 +29,19 @@ type SearchResult = {
 type SearchRequest = Request<Record<string, unknown>, SearchResult, Record<string, unknown>, { q: string }>
 type SearchResponse = Response<SearchResult | { errors: Result<ValidationError> }>
 
-app.get(
-    '/search',
-    [query('q').isLength({ min: 3 }).not().isEmpty().trim().escape()],
-    async (req: SearchRequest, res: SearchResponse) => {
-        const errors = validationResult(req)
+app.get('/search', [query('q').not().isEmpty().trim().escape()], async (req: SearchRequest, res: SearchResponse) => {
+    const errors = validationResult(req)
 
-        if (!errors.isEmpty()) {
-            return res.status(400).json({ errors })
-        }
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors })
+    }
 
-        const { data } = await axios.get<SearchResult>(
-            `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${req.query.q}`,
-        )
+    const { data } = await axios.get<SearchResult>(
+        `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${req.query.q}`,
+    )
 
-        return res.send(data)
-    },
-)
+    return res.send(data)
+})
 
 const { PORT = 3000 } = process.env
 
