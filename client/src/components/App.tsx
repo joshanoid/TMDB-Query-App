@@ -1,10 +1,21 @@
 import * as React from 'react'
-import Button from '@mui/material/Button'
+import { Box, IconButton, Stack, TextField, Typography } from '@mui/material'
+import SearchIcon from '@mui/icons-material/Search'
 
-type AppProps = { num: number }
+import './App.css'
 
-export const App = ({ num }: AppProps) => (
-    <>
-        <Button variant="contained">Hello World</Button> <h1>Total Number: {num}</h1>
-    </>
+export const App = () => (
+    <Stack spacing={2}>
+        <Typography variant="h1" gutterBottom align="center">
+            TMDB Query App
+        </Typography>
+        <Box width="100%" padding="0 5vw">
+            <Stack direction="row" width="100%">
+                <TextField label="Search..." variant="outlined" fullWidth />
+                <IconButton aria-label="search">
+                    <SearchIcon />
+                </IconButton>
+            </Stack>
+        </Box>
+    </Stack>
 )
