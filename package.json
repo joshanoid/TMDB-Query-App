@@ -22,6 +22,7 @@
         "@emotion/styled": "11.10.0",
         "@mui/icons-material": "5.10.2",
         "@mui/material": "5.10.2",
+        "@tanstack/react-query": "4.2.3",
         "axios": "0.27.2",
         "express": "4.18.1",
         "express-validator": "6.14.2",
