@@ -30,3 +30,19 @@ export type SearchResult = {
 export type GenresResult = {
     genres: ReadonlyArray<Genre>
 }
+
+export type ExtendedMovie = Movie & {
+    belongs_to_collection: null | Record<string, unknown>
+    budget: number
+    genres: ReadonlyArray<Genre>
+    homepage: string | null
+    imdb_id: string | null
+    production_companies: ReadonlyArray<{ name: string; id: number; logo_path: string | null; origin_country: string }>
+    production_countries: ReadonlyArray<{ iso_3166_1: string; name: string }>
+    revenue: number
+    runtime: number | null
+    spoken_languages: ReadonlyArray<{ iso_639_1: string; name: string }>
+    status: 'Rumored' | 'Planned' | 'In Production' | 'Post Production' | 'Released' | 'Canceled'
+    tagline: string | null
+    wikiDetails?: string
+}
