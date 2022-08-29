@@ -9,6 +9,7 @@ import './index.css'
 
 export const Main = () => {
     const [searchTerm, setSearchTerm] = React.useState('')
+    const [selectedMovie, setSelectedMovie] = React.useState<number | null>(null)
     const searchFieldRef = React.useRef<HTMLInputElement>(null)
     const { data } = useQuery(['genres'], fetchGenres)
 
@@ -32,11 +33,17 @@ export const Main = () => {
                         {searchTerm === '' ? (
                             <Typography variant="body2">Please use the search field above</Typography>
                         ) : (
-                            <Movies searchTerm={searchTerm} genres={data} />
+                            <Movies searchTerm={searchTerm} genres={data} setSelectedMovie={setSelectedMovie} />
                         )}
                     </Paper>
                     <Paper elevation={3} sx={{ width: '50%', height: '100%' }}>
-                        wefwef
+                        <Typography variant="h2">Selected movie details:</Typography>
+                        {selectedMovie ? (
+                            // <MovieDetails selectedMovie={selectedMovie} />
+                            <Box>details of {selectedMovie}</Box>
+                        ) : (
+                            <Typography variant="body2">Please click on one of the movie titles in the list</Typography>
+                        )}
                     </Paper>
                 </Stack>
             ) : (
