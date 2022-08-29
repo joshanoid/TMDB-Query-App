@@ -4,6 +4,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import { useQuery } from '@tanstack/react-query'
 
 import { Movies } from 'features/Movies'
+import { MovieDetails } from 'features/MovieDetails'
 import { fetchGenres } from 'utils/api'
 import './index.css'
 
@@ -39,8 +40,7 @@ export const Main = () => {
                     <Paper elevation={3} sx={{ width: '50%', height: '100%' }}>
                         <Typography variant="h2">Selected movie details:</Typography>
                         {selectedMovie ? (
-                            // <MovieDetails selectedMovie={selectedMovie} />
-                            <Box>details of {selectedMovie}</Box>
+                            <MovieDetails selectedMovie={selectedMovie} />
                         ) : (
                             <Typography variant="body2">Please click on one of the movie titles in the list</Typography>
                         )}
