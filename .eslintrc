@@ -4,7 +4,10 @@
     "plugins": ["react-hooks", "functional", "jest-formatting", "unicorn"],
     "settings": {
         "import/resolver": {
-            "node": true,
+            "node": {
+                "extensions": [".js", ".jsx", ".ts", ".tsx"],
+                "moduleDirectory": ["node_modules", "src/"]
+            },
             "eslint-import-resolver-typescript": true
         }
     },
