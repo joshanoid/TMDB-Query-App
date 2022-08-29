@@ -11,6 +11,7 @@ import {
     TableCell,
     TablePagination,
     TableHead,
+    Link,
 } from '@mui/material'
 
 import { fetchMovies } from 'utils/api'
@@ -19,9 +20,10 @@ import { Genre } from 'utils/types'
 type Props = {
     searchTerm: string
     genres: ReadonlyArray<Genre>
+    setSelectedMovie: React.Dispatch<React.SetStateAction<number | null>>
 }
 
-export const Movies = ({ searchTerm, genres }: Props) => {
+export const Movies = ({ searchTerm, genres, setSelectedMovie }: Props) => {
     const [page, setPage] = React.useState(1)
     const { data } = useQuery(['movies', searchTerm, page], () => fetchMovies(searchTerm, page), {
         enabled: !!searchTerm,
@@ -51,7 +53,9 @@ export const Movies = ({ searchTerm, genres }: Props) => {
                                 {data.results.map((row) => (
                                     <TableRow key={row.id}>
                                         <TableCell component="th" scope="row">
-                                            {row.title}
+                                            <Link href="#" onClick={() => setSelectedMovie(row.id)}>
+                                                {row.title}
+                                            </Link>
                                         </TableCell>
                                         <TableCell align="right">
                                             {row.genre_ids.map((id) => genresObject[id]).join(',')}
