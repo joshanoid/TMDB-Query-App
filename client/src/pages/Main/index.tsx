@@ -2,9 +2,11 @@ import * as React from 'react'
 import { Box, IconButton, Stack, TextField, Typography } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 
+import { Test } from 'features/Test'
+
 import './index.css'
 
-export const TMDB = () => {
+export const Main = () => {
     const [searchTerm, setSearchTerm] = React.useState('')
     const searchFieldRef = React.useRef<HTMLInputElement>(null)
 
@@ -18,6 +20,7 @@ export const TMDB = () => {
                     <TextField label="Search..." variant="outlined" fullWidth inputRef={searchFieldRef} />
                     <IconButton aria-label="search" onClick={() => setSearchTerm(searchFieldRef.current?.value ?? '')}>
                         <SearchIcon />
+                        <Test />
                     </IconButton>
                 </Stack>
                 {searchTerm}
