@@ -27,6 +27,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
+        modules: ['node_modules', path.join(__dirname, 'src')],
     },
     plugins: [
         new HtmlWebpackPlugin({

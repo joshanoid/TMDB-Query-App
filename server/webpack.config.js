@@ -25,5 +25,6 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.js'],
+        modules: ['node_modules', path.join(__dirname, 'src')],
     },
 }
